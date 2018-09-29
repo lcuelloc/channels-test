@@ -48,10 +48,12 @@ THIRD_PARTY_APPS = [
     'django_extensions',
     'expander',
     'corsheaders',
+    'channels',
 ]
 
 LOCAL_APPS = [
     'v1.accounts.apps.AccountsConfig',
+    'v1.chat.apps.ChatConfig',
 ]
 
 INSTALLED_APPS = LOCAL_APPS + DJANGO_APPS + THIRD_PARTY_APPS
@@ -77,6 +79,9 @@ MIDDLEWARE = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
+# ASGI CONFIG
+# -------------------------------------------------------------------------------------------------
+ASGI_APPLICATION = "config.routing.application"
 
 # DATABASE CONFIG
 # -------------------------------------------------------------------------------------------------

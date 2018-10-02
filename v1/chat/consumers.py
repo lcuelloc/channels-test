@@ -2,6 +2,8 @@ from channels.generic.websocket import WebsocketConsumer, AsyncWebsocketConsumer
 from asgiref.sync import async_to_sync
 import json
 
+from v1.chat.tasks import save_message_task
+
 """
 Synchronous
 class ChatConsumer(WebsocketConsumer):
@@ -93,6 +95,8 @@ class ChatConsumer(AsyncWebsocketConsumer):
                 'type': 'chat_message',
                 'message': message
             })
+
+        save_message_task.delay(message)
 
     async def chat_message(self, event):
         message = event['message']

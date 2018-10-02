@@ -163,3 +163,11 @@ STATICFILES_FINDERS = [
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#static-url
 STATIC_URL = '/static/'
+
+# CELERY CONFIG
+# -------------------------------------------------------------------------------------------------
+INSTALLED_APPS += ['v1.taskapp.celery.CeleryConfig']
+CELERY_BROKER_URL = 'redis://'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TASK_SERIALIZER = 'json'
